@@ -43,4 +43,18 @@ select first_name "Nome", last_name "Sobrenome", salary "Salário ($)", commissio
 from employees;
 
 -- Operador de concatenação
+select first_name || ' ' || last_name || ', data de admissão: ' || hire_date as "Funcionário"
+from employees;
+
+-- Operador alternativo
+select department_name || q'[ Department's Manager Id: ]' || manager_id "Departamento e Gerente"
+FROM departments;
+
+-- Distinct
+select distinct department_id
+FROM employees;
+
+select distinct *
+from employees;
+
 
