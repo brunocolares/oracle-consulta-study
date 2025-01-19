@@ -51,3 +51,9 @@ SELECT first_name || ' ' || last_name as "Nome completo",
        NVL(TO_CHAR(hire_date), '01/01/1900') as "01/01/1900 caso nulo"
 FROM employees;       
         
+        
+-- ROUND E TRUNC COM DAY
+SELECT TO_CHAR(hire_date, 'DD/MM/YY HH24:MI:SS') || ' ' || TO_CHAR(hire_date, 'DAY') AS "DATA DA CONTRATAÇÃO", 
+        TO_CHAR(ROUND(hire_date, 'DAY'), 'DD/MM/YY HH24:MI:SS'), 
+        TO_CHAR(TRUNC(hire_date, 'DAY'), 'DD/MM/YY HH24:MI:SS')
+FROM employees;
