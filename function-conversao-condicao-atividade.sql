@@ -55,7 +55,23 @@ SELECT department_id,
         'Outros') Descrição
 FROM departments;
 
-
+-- DESAFIO
+SELECT first_name || ' ' || last_name "Nome completo",
+    TO_CHAR(hire_date, 'DD/MM/YYYY') "Data de contratação",
+    'Anos:' || (TO_NUMBER(TO_CHAR(sysdate, 'YYYY')) - TO_NUMBER(TO_CHAR(hire_date, 'YYYY'))) || ' Meses: ' ||
+    ROUND(MONTHS_BETWEEN(sysdate, hire_date)) ||
+    ' Dias: ' || ROUND((sysdate - hire_date)) "Tempo de trabalho",
+    CASE 
+        WHEN (TO_NUMBER(TO_CHAR(sysdate, 'YYYY')) - TO_NUMBER(TO_CHAR(hire_date, 'YYYY'))) < 1
+            THEN 'Recém contratado'
+        WHEN (TO_NUMBER(TO_CHAR(sysdate, 'YYYY')) - TO_NUMBER(TO_CHAR(hire_date, 'YYYY'))) >= 1 AND 
+            (TO_NUMBER(TO_CHAR(sysdate, 'YYYY')) - TO_NUMBER(TO_CHAR(hire_date, 'YYYY')))  <= 5
+            THEN 'Experiente'
+        ELSE
+            'Veterano'
+    END "Classificação de tempo",
+    NEXT_DAY(hire_date, 'MONDAY') "Próximo dia últil"
+FROM employees;
         
             
 
