@@ -26,4 +26,7 @@ FROM employees
 GROUP BY TO_CHAR(hire_date, 'YYYY')
 HAVING COUNT(*) > 5;
 
+-- 5
+
+
 
