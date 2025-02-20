@@ -18,4 +18,12 @@ FROM EMPLOYEES
 ORDER BY DIAS_TRABALHADOS DESC;
 
 -- 4
+SELECT 
+    COUNT(*),
+    TO_CHAR(hire_date, 'YYYY') as ANO_CONTRATACAO,
+    ROUND(AVG(salary), 2)
+FROM employees
+GROUP BY TO_CHAR(hire_date, 'YYYY')
+HAVING COUNT(*) > 5;
+
 
