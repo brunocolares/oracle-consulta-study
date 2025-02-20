@@ -27,6 +27,47 @@ GROUP BY TO_CHAR(hire_date, 'YYYY')
 HAVING COUNT(*) > 5;
 
 -- 5
+SELECT COUNT(*) as "Funcionários por departamento",
+    department_id,
+    SUM(salary) as "Salários por departamento",
+    ROUND(AVG(salary), 2) as "Média de salário por departamento",
+    MAX(salary) as "Maior salário por departmento"
+FROM employees
+GROUP BY department_id
+HAVING SUM(salary) > 50000;
+
+-- 6
+SELECT COUNT(*) "Funcionários",
+        TO_CHAR(hire_date, 'MM') "Mês de contratação"
+FROM employees
+GROUP BY TO_CHAR(hire_date, 'MM')
+HAVING COUNT(*) > 2;
+
+-- 7
+SELECT 
+    (CASE
+        WHEN salary <= 3000 THEN
+            'Baixo'
+        WHEN salary > 3000 AND salary <= 6000 THEN
+            'Médio'
+        ELSE
+            'Alto'
+        END) as CLASSIFICACAO_SALARIO,
+    COUNT(*) as FUNCIONARIOS,
+    ROUND(AVG(salary), 2) as media            
+FROM employees
+GROUP BY (CASE
+        WHEN salary <= 3000 THEN
+            'Baixo'
+        WHEN salary > 3000 AND salary <= 6000 THEN
+            'Médio'
+        ELSE
+            'Alto'
+        END);
+        
+-- 8
+SELECT department_id, COUNT(*)
+FROM employees
 
 
 
